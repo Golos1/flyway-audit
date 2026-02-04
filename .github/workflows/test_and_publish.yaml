@@ -3,12 +3,12 @@ on:
   push:
     branches:
       - 'master'
+permissions:
+  id-token: write
+  contents: read
+  packages: write
 jobs:
   test_and_publish:
-    permissions:
-      id-token: write
-      contents: read
-      packages: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
