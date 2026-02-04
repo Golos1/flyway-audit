@@ -32,12 +32,7 @@ public class S3PostMigrationStatement implements Callback {
                 throw new RuntimeException("Bucket Versioning must be enabled on bucket " + bucketName + " for it to be used.");
             }
         }catch (AwsServiceException e){
-            if(e.statusCode() >= 400 && e.statusCode() < 500){
-                throw new RuntimeException("Error authenticating to AWS, please ensure credentials are in environment.");
-            }
-            else{
-                throw new RuntimeException(e.getLocalizedMessage());
-            }
+            throw new RuntimeException(e.getLocalizedMessage());
         }
 
     }
