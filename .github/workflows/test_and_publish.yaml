@@ -17,9 +17,6 @@ jobs:
           java-version: '25'
           distribution: 'corretto'
           cache: 'maven'
-        env:
-          GITHUB_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
-          GITHUB_ACTOR: Golos1
       - name: Assume AWS Role
         uses: aws-actions/configure-aws-credentials@v5
         with:
