@@ -3,12 +3,12 @@ on:
   push:
     branches:
       - 'master'
-permissions:
-  id-token: write
-  contents: read
-  packages: write
 jobs:
   test_and_publish:
+    permissions:
+      id-token: write
+      contents: read
+      packages: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -27,4 +27,4 @@ jobs:
       - name: Publish package
         run: mvn --batch-mode deploy
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
