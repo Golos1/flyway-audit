@@ -15,6 +15,4 @@ public class S3PostMigrationStatementTest {
                 load();
         assertDoesNotThrow(flyway::migrate);
     }
-
-
 }
