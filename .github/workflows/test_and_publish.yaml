@@ -24,7 +24,6 @@ jobs:
         with:
           aws-region: 'us-east-2'
           role-to-assume: ${{secrets.AWS_ROLE}}
-      - run: mvn --batch-mode test
       - name: Publish package
         run: mvn --batch-mode deploy
         env:
