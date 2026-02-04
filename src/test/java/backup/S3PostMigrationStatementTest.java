@@ -11,7 +11,7 @@ public class S3PostMigrationStatementTest {
     public void testHandle(){
         Flyway flyway = Flyway.configure().
                 dataSource("jdbc:h2:file:./test/dbfile", "sa", null).
-                callbacks(new S3PostMigrationStatement("test-migration-statements")).
+                callbacks(new S3PostMigrationStatement("test-flyway-callback")).
                 load();
         assertDoesNotThrow(flyway::migrate);
     }
