@@ -26,6 +26,6 @@ jobs:
           role-to-assume: ${{secrets.AWS_ROLE}}
       - run: mvn --batch-mode verify
       - name: Publish package
-      - run: mvn deploy -s ${{ github.workspace }}/settings.xml
+        run: mvn deploy -s ${{ github.workspace }}/settings.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
