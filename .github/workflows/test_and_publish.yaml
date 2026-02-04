@@ -11,19 +11,21 @@ jobs:
       packages: write
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v6
       - uses: actions/setup-java@v5
         with:
           java-version: '25'
           distribution: 'corretto'
           cache: 'maven'
+          server-id: github
+          settings-path: ${{ github.workspace }}
       - name: Assume AWS Role
         uses: aws-actions/configure-aws-credentials@v5
         with:
           aws-region: 'us-east-2'
           role-to-assume: ${{secrets.AWS_ROLE}}
       - run: mvn --batch-mode verify
-      - run: ls .
       - name: Publish package
-        run: mvn --batch-mode deploy
+      - run: mvn deploy -s ${{ github.workspace }}/settings.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
