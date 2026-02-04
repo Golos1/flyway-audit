@@ -1,5 +1,6 @@
 package backup;
 
+import org.backup.S3PostMigrationStatement;
 import org.flywaydb.core.Flyway;
 import org.junit.jupiter.api.Test;
 
