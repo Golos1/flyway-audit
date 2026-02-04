@@ -24,9 +24,9 @@ jobs:
         with:
           aws-region: 'us-east-2'
           role-to-assume: ${{secrets.AWS_ROLE}}
-      - run: mvn package --batch-mode
       - run: mvn --batch-mode --update-snapshots verify
+      - run: mvn --batch-mode clean install
       - name: Publish package
-        run: mvn --batch-mode deploy
+        run: mvn --batch-mode clean deploy
         env:
           GITHUB_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
