@@ -16,9 +16,6 @@ jobs:
         with:
           java-version: '25'
           distribution: 'corretto'
-          cache: 'maven'
-          server-id: github
-          settings-path: ${{ github.workspace }}
       - name: Assume AWS Role
         uses: aws-actions/configure-aws-credentials@v5
         with:
