@@ -24,8 +24,8 @@ jobs:
         with:
           aws-region: 'us-east-2'
           role-to-assume: ${{secrets.AWS_ROLE}}
-      - run: mvn --batch-mode verify
+      - run: mvn --batch-mode test
       - name: Publish package
-        run: mvn deploy -s ${{ github.workspace }}/settings.xml
+        run: mvn --batch-mode deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
