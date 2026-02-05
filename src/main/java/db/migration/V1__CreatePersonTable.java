@@ -6,7 +6,7 @@ import org.flywaydb.core.api.migration.Context;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class V1_CreatePersonTable  extends BaseJavaMigration {
+public class V1__CreatePersonTable  extends BaseJavaMigration {
     @Override
     public void migrate(Context context) throws Exception {
         try (Statement statement = context.getConnection().createStatement()) {
