@@ -42,7 +42,7 @@ public class S3PostMigration implements Callback {
     @Override
     public void handle(Event event, Context context) {
         PutObjectRequest request = PutObjectRequest.builder().bucket(bucketName)
-                .key(context.getMigrationInfo().getInstalledOn().toString())
+                .key((new Date()).toString())
                 .build();
         try {
             PutObjectResponse response = client.putObject(request, RequestBody.fromString(("Description: "  + context.getMigrationInfo().getDescription() + "\nType: " + context.getMigrationInfo().getType().name()) + "\nInstalled By: " + context.getMigrationInfo().getInstalledBy()));
