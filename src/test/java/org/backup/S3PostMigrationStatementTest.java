@@ -19,6 +19,7 @@ public class S3PostMigrationStatementTest {
                 dataSource("jdbc:h2:file:./target/foobar", "sa", null).
                 callbacks(callback).
                 load();
+        System.out.println("Callback: " + flyway.getConfiguration().getCallbacks()[0].getCallbackName());
         assertDoesNotThrow(flyway::migrate);
     }
 }
