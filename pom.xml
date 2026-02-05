@@ -6,7 +6,7 @@
 
     <groupId>io.github.golos1</groupId>
     <artifactId>flyway-audit</artifactId>
-    <version>1.0.9</version>
+    <version>1.0.10</version>
     <packaging>jar</packaging>
     <distributionManagement>
         <repository>

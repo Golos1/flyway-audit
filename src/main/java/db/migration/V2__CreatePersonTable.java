@@ -6,7 +6,7 @@ import org.flywaydb.core.api.migration.Context;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class V1__CreatePersonTable  extends BaseJavaMigration {
+public class V2__CreatePersonTable  extends BaseJavaMigration {
     @Override
     public void migrate(Context context) throws Exception {
         try (Statement statement = context.getConnection().createStatement()) {
@@ -14,7 +14,8 @@ public class V1__CreatePersonTable  extends BaseJavaMigration {
                     "CustomerID INT PRIMARY KEY," +
                     "FirstName VARCHAR(25)," +
                     "LastName VARCHAR(25)" +
-                    ");");
+                     "City VARCHAR(25)" +
+                     ");");
         }
     }
 }
