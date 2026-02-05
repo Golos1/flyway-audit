@@ -27,7 +27,6 @@ public class DatabaseMigrationHistory implements Callback {
 
     @Override
     public void handle(Event event, Context context) {
-        LocalDateTime now = LocalDateTime.now();
         try (Statement statement =  context.getConnection().createStatement()){
             statement.execute("""
                     CREATE TABLE IF NOT EXISTS FlywayMigrations(
@@ -37,9 +36,10 @@ public class DatabaseMigrationHistory implements Callback {
                     ApproximateTime DATETIME
                     );""");
             PreparedStatement insertStatement = context.getConnection().prepareStatement("INSERT INTO FlywayMigrations (Description, Type, ApproximateTime) " +
-                    "VALUES (" + context.getMigrationInfo().getDescription() + ", " + context.getMigrationInfo().getType().name() + ", " + "(?));");
-                    insertStatement.setObject(1, now);
-                    insertStatement.executeUpdate();
+                    "VALUES ((?)" + ",(?) " + ", CURRENT_TIMESTAMP());");
+            insertStatement.setString(1, context.getMigrationInfo().getDescription());
+            insertStatement.setString(2, context.getMigrationInfo().getType().name());
+            insertStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
