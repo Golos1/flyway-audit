@@ -17,6 +17,7 @@ public class S3PostMigrationTest {
         }
         Flyway flyway = Flyway.configure().
                 dataSource("jdbc:h2:file:./target/foobar", "sa", null).
+                cleanDisabled(false).
                 callbacks(callback).
                 load();
         flyway.clean();
