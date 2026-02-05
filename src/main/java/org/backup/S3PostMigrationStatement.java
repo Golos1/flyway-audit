@@ -49,6 +49,7 @@ public class S3PostMigrationStatement implements Callback {
 
     @Override
     public void handle(Event event, Context context) {
+        System.out.println("Uploading SQL Statement to S3...");
         Statement statement = context.getStatement();
         PutObjectRequest request = PutObjectRequest.builder().bucket(bucketName)
                 .key(context.getMigrationInfo().getScript())
