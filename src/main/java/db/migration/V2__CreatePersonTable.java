@@ -13,7 +13,7 @@ public class V2__CreatePersonTable  extends BaseJavaMigration {
              statement.execute("CREATE TABLE customers(" +
                     "CustomerID INT PRIMARY KEY," +
                     "FirstName VARCHAR(25)," +
-                    "LastName VARCHAR(25)" +
+                    "LastName VARCHAR(25)," +
                      "City VARCHAR(25)" +
                      ");");
         }
