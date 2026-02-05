@@ -42,10 +42,10 @@ public class S3PostMigration implements Callback {
     @Override
     public void handle(Event event, Context context) {
         PutObjectRequest request = PutObjectRequest.builder().bucket(bucketName)
-                .key((new Date()).toString())
+                .key(context.getMigrationInfo().getInstalledOn().toString())
                 .build();
         try {
-            PutObjectResponse response = client.putObject(request, RequestBody.fromString("Description: "  + context.getMigrationInfo().getDescription() + ", Type: " + context.getMigrationInfo().getType().name()));
+            PutObjectResponse response = client.putObject(request, RequestBody.fromString(("Description: "  + context.getMigrationInfo().getDescription() + "\nType: " + context.getMigrationInfo().getType().name()) + "\nInstalled By: " + context.getMigrationInfo().getInstalledBy()));
         }catch (S3Exception e){
             throw new RuntimeException("S3 connection error: " + e.getLocalizedMessage());
         }catch (AwsServiceException e){
@@ -55,6 +55,6 @@ public class S3PostMigration implements Callback {
 
     @Override
     public String getCallbackName() {
-        return "S3PostMigrationStatement";
+        return "S3PostMigration";
     }
 }

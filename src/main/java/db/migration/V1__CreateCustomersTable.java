@@ -5,7 +5,7 @@ import org.flywaydb.core.api.migration.Context;
 
 import java.sql.Statement;
 
-public class V3__CreateCustomersTable extends BaseJavaMigration {
+public class V1__CreateCustomersTable extends BaseJavaMigration {
     @Override
     public void migrate(Context context) throws Exception {
         try (Statement statement = context.getConnection().createStatement()) {
