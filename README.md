@@ -8,3 +8,9 @@ Using AWS S3 objects, this callback maps timestamps to descriptions of migration
 #### Details
 In order to ensure idempotency, this callback doesn't create the S3 bucket, so a preexisting one must be used. 
 AWS credentials are fetched from the environment for security reasons.
+
+### DatabaseMigrationHistory
+Creates/inserts into a table of database migration history using the same connection as the migration.
+
+#### Details
+For queries referencing this table, its name is FlywayMigrations.

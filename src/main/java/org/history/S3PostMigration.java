@@ -24,9 +24,6 @@ public class S3PostMigration implements Callback {
     public S3PostMigration(String bucketName){
         client = S3Client.create();
         this.bucketName = bucketName;
-        GetBucketVersioningRequest getBucketVersioningRequest = GetBucketVersioningRequest.builder()
-                .bucket(bucketName)
-                .build();
     }
 
     @Override

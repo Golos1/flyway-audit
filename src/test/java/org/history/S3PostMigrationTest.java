@@ -6,6 +6,10 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class S3PostMigrationTest {
+    /**
+     * Tests to see that S3PostMigration callback runs without exception.
+     * Can only properly be done in CI due to usage of AWS.
+     */
     @Test
     public void testHandle(){
         S3PostMigration callback;
