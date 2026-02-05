@@ -24,7 +24,7 @@ public class DatabaseMigrationHistoryTest {
         assertDoesNotThrow(flyway::migrate);
         try(Connection connection = DriverManager.getConnection("jdbc:h2:file:./target/foobar", "sa", null)) {
             Statement statement = connection.createStatement();
-            ResultSet results = statement.executeQuery("SELECT COUNT(*) FROM FlywayMigrations AS numRows");
+            ResultSet results = statement.executeQuery("SELECT COUNT(*) AS numRows FROM FlywayMigrations ");
             assertTrue(results.getInt("numRows") > 0);
         } catch (SQLException e) {
             fail(e);
