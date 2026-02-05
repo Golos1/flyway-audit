@@ -39,7 +39,7 @@ public class S3PostMigrationStatement implements Callback {
 
     @Override
     public boolean supports(Event event, Context context) {
-        return (event.equals(Event.AFTER_EACH_MIGRATE));
+        return (event == Event.AFTER_EACH_MIGRATE_STATEMENT);
     }
 
     @Override
