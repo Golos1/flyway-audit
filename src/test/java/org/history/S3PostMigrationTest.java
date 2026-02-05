@@ -1,16 +1,16 @@
-package org.backup;
+package org.history;
 
 import org.flywaydb.core.Flyway;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.fail;
 
-public class S3PostMigrationStatementTest {
+public class S3PostMigrationTest {
     @Test
     public void testHandle(){
-        S3PostMigrationStatement callback;
+        S3PostMigration callback;
         try {
-            callback = new S3PostMigrationStatement("test-flyway-callback");
+            callback = new S3PostMigration("test-flyway-callback");
         }catch (Exception e){
             fail(e);
             return;
