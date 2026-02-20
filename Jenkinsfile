@@ -13,16 +13,16 @@ pipeline {
                     checkout scm
                 }
         }
-        stage('Build') {
-            steps {
-                sh 'mvn clean install -DskipTests -B'
-            }
-        }
         stage('Test') {
             steps {
                 sh 'mvn test -B -Dtest=ErrorHistoryTest,DatabaseMigrationHistoryTest'
             }
-            post {
+        stage('Build') {
+                    steps {
+                        sh 'mvn clean install -DskipTests -B'
+                    }
+                }
+        post {
                 always {
                     junit 'target/surefire-reports/*.xml'
                 }
