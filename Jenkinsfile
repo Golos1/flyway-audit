@@ -6,6 +6,12 @@ pipeline {
     options {
         skipStagesAfterUnstable()
     }
+    stage('Checkout Source Code') {
+        steps {
+            checkout scm
+        }
+    }
+
     stages {
         stage('Build') {
             steps {
@@ -25,7 +31,7 @@ pipeline {
     }
     post {
         always {
-            archiveArtifacts artifacts: 'build/*.jar'
+            archiveArtifacts artifacts: 'target/*.jar'
         }
     }
 }
