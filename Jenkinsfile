@@ -9,8 +9,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                // Clean and package the application, skipping tests initially
-                sh 'mvn clean install -B'
+                sh 'mvn clean install -DskipTests -B'
             }
         }
         stage('Test') {
