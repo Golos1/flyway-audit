@@ -23,15 +23,10 @@ pipeline {
                         sh 'mvn clean install -DskipTests -B'
                     }
         }
-        post {
-                always {
-                    junit 'target/surefire-reports/*.xml'
-                }
-            }
-        }
     }
     post {
         always {
+            junit 'target/surefire-reports/*.xml'
             archiveArtifacts artifacts: 'target/*.jar'
         }
     }
