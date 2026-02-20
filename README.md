@@ -14,3 +14,9 @@ Creates/inserts into a table of database migration history using the same connec
 
 #### Details
 For queries referencing this table, its name is FlywayMigrations.
+
+### ErrorHistory
+Creates/inserts into a table of migration error history using the same connection as the migration.
+
+####
+For queries referencing this table, its name is FlywayMigrationErrors.

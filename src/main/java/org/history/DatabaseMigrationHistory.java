@@ -6,14 +6,11 @@ import org.flywaydb.core.api.callback.Event;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 
 /**
  * Creates/inserts into a table of database migration history (called FlywayMigrations) using the same connection as the migration.
  */
 public class DatabaseMigrationHistory implements Callback {
-    private static SimpleDateFormat format = new SimpleDateFormat("");
 
     @Override
     public boolean supports(Event event, Context context) {

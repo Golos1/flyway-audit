@@ -42,7 +42,7 @@ public class S3PostMigration implements Callback {
                 .key((new Date()).toString())
                 .build();
         try {
-            PutObjectResponse response = client.putObject(request, RequestBody.fromString(("Description: "  + context.getMigrationInfo().getDescription() + "\nType: " + context.getMigrationInfo().getType().name()) + "\nInstalled By: " + context.getMigrationInfo().getInstalledBy()));
+            client.putObject(request, RequestBody.fromString(("Description: "  + context.getMigrationInfo().getDescription() + "\nType: " + context.getMigrationInfo().getType().name()) + "\nInstalled By: " + context.getMigrationInfo().getInstalledBy()));
         }catch (S3Exception e){
             throw new RuntimeException("S3 connection error: " + e.getLocalizedMessage());
         }catch (AwsServiceException e){
