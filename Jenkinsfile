@@ -17,6 +17,7 @@ pipeline {
             steps {
                 sh 'mvn test -B -Dtest=ErrorHistoryTest,DatabaseMigrationHistoryTest'
             }
+        }
         stage('Build') {
                     steps {
                         sh 'mvn clean install -DskipTests -B'
