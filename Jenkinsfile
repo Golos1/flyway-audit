@@ -6,13 +6,13 @@ pipeline {
     options {
         skipStagesAfterUnstable()
     }
-    stage('Checkout Source Code') {
-        steps {
-            checkout scm
-        }
-    }
 
     stages {
+        stage('Checkout Source Code') {
+                steps {
+                    checkout scm
+                }
+        }
         stage('Build') {
             steps {
                 sh 'mvn clean install -DskipTests -B'
