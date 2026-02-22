@@ -4,11 +4,10 @@ on:
     branches-ignore: 
       - 'master'
 jobs:
-  test_and_publish:
+  test:
     permissions:
       id-token: write
       contents: read
-      packages: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
