@@ -18,5 +18,8 @@ For queries referencing this table, its name is FlywayMigrations.
 ### ErrorHistory
 Creates/inserts into a table of migration error history using the same connection as the migration.
 
-####
+#### Details
 For queries referencing this table, its name is FlywayMigrationErrors.
+
+### SSMPostBaseline
+Sets an AWS ParamStore parameter value equal to the baseline version and description equal to baseline description.
