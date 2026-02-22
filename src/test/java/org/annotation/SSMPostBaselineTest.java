@@ -1,12 +1,14 @@
 package org.annotation;
 
 import org.flywaydb.core.Flyway;
+import org.junit.jupiter.api.Test;
 import software.amazon.awssdk.services.ssm.SsmClient;
 import software.amazon.awssdk.services.ssm.model.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SSMPostBaselineTest {
+    @Test
     public void testHandle(){
         SSMPostBaseline callback;
         try {
