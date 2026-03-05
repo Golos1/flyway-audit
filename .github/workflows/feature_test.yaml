@@ -1,11 +1,12 @@
 name: feature_test
 on:
   push:
-    branches-ignore:
-      - 'master'
+    branches:
+      - '*'
+      - '!master'
 
 jobs:
-  test_and_publish:
+  test:
     permissions:
       id-token: write
       contents: read
