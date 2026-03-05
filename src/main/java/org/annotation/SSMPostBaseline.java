@@ -4,6 +4,7 @@ import org.flywaydb.core.api.callback.Callback;
 import org.flywaydb.core.api.callback.Context;
 import org.flywaydb.core.api.callback.Event;
 import software.amazon.awssdk.services.ssm.SsmClient;
+import software.amazon.awssdk.services.ssm.model.ParameterType;
 import software.amazon.awssdk.services.ssm.model.PutParameterRequest;
 
 /**
@@ -37,7 +38,13 @@ public class SSMPostBaseline  implements Callback {
     public void handle(Event event, Context context) {
         String description = context.getConfiguration().getBaselineDescription();
         String version = context.getConfiguration().getBaselineVersion().getVersion();
-        PutParameterRequest request = PutParameterRequest.builder().name(paramName).value(version).description(description).build();
+        PutParameterRequest request = PutParameterRequest.builder()
+                .name(paramName)
+                .value(version)
+                .description(description)
+                .overwrite(true)
+                .type(ParameterType.SECURE_STRING)
+                .build();
         try{
             client.putParameter(request);
         }

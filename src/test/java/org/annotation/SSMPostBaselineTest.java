@@ -28,7 +28,10 @@ public class SSMPostBaselineTest {
         flyway.baseline();
         assertDoesNotThrow(flyway::migrate);
         try (SsmClient client = SsmClient.create()) {
-            GetParameterRequest request = GetParameterRequest.builder().name("FlywayBaseline").build();
+            GetParameterRequest request = GetParameterRequest.builder()
+                    .name("FlywayBaseline")
+                    .withDecryption(true)
+                    .build();
             GetParameterResponse response = client.getParameter(request);
             assertEquals("0.0.0",response.parameter().value());
             ParameterStringFilter filter = ParameterStringFilter.builder()
