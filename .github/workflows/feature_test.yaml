@@ -1,5 +1,5 @@
 name: feature_test
-on: [push]
+on: push
 
 jobs:
   test:
