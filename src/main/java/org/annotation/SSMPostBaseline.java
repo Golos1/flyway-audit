@@ -42,6 +42,7 @@ public class SSMPostBaseline  implements Callback {
                 .name(paramName)
                 .value(version)
                 .description(description)
+                .overwrite(true)
                 .type(ParameterType.SECURE_STRING)
                 .build();
         try{
