@@ -20,11 +20,12 @@ public class SSMPostBaselineTest {
         Flyway flyway = Flyway.configure().
                 dataSource("jdbc:h2:file:./target/foobar", "sa", null).
                 cleanDisabled(false).
+                callbacks(callback).
                 baselineDescription("TestDescription").
                 baselineVersion("0.0.0").
-                callbacks(callback).
                 load();
         flyway.clean();
+        flyway.baseline();
         assertDoesNotThrow(flyway::migrate);
         try (SsmClient client = SsmClient.create()) {
             GetParameterRequest request = GetParameterRequest.builder().name("FlywayBaseline").build();
