@@ -23,3 +23,6 @@ For queries referencing this table, its name is FlywayMigrationErrors.
 
 ### SSMPostBaseline
 Sets an AWS ParamStore parameter value equal to the baseline version and description equal to baseline description.
+
+### EmailFakePostMigration
+Anonymizes emails in a chosen column of a chosen table after the migrate command is complete.
