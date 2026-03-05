@@ -21,4 +21,4 @@ jobs:
         with:
           aws-region: 'us-east-2'
           role-to-assume: ${{secrets.AWS_ROLE}}
-      - run: mvn  test --batch-mode
+      - run: mvn  test -B
