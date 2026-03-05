@@ -1,6 +1,8 @@
 name: feature_test
-on: push
-
+on:
+  push:
+    branches-ignore:
+      - 'master'
 jobs:
   test:
     permissions:
