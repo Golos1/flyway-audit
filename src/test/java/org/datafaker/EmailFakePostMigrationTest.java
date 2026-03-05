@@ -20,9 +20,8 @@ public class EmailFakePostMigrationTest {
         assertDoesNotThrow(flyway::migrate);
         try(Connection connection = DriverManager.getConnection("jdbc:h2:file:./target/foobar", "sa", null)) {
             Statement statement = connection.createStatement();
-            ResultSet results = statement.executeQuery("SELECT DISTINCT Email FROM customers");
-            results.next();
-            assertTrue(results.next());
+            ResultSet results = statement.executeQuery("SELECT * FROM customers WHERE Email = 'Golos1@gmail.com'");
+            assertFalse(results.next(),"existing email wasn't overwritten");
         } catch (SQLException e) {
             fail(e);
         }
